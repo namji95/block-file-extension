@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>block file extension</title>
+</head>
+<body>
+<div id="container">
+    <div id="titleName">
+        <h1 id="subTitle">◎ 파일 확장자 차단</h1>
+    </div>
+    <span id="explanation">파일확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한</span>
+    <div id="child">
+        <span id="fixedExtension">고정 확장자</span>
+        <div id="checkBox">
+            <label>
+                <input class="check" type="checkbox" value="bat" />
+                bat
+            </label>
+            <label>
+                <input class="check" type="checkbox" value="cmd" />
+                cmd
+            </label>
+            <label>
+                <input class="check" type="checkbox" value="com" />
+                com
+            </label>
+            <label>
+                <input class="check" type="checkbox" value="cpl" />
+                cpl
+            </label>
+            <label>
+                <input class="check" type="checkbox" value="exe" />
+                exe
+            </label>
+            <label>
+                <input class="check" type="checkbox" value="scr" />
+                scr
+            </label>
+            <label>
+                <input class="check" type="checkbox" value="js" />
+                js
+            </label>
+        </div>
+        <span id="customExtension">커스텀 확장자</span>
+        <div id="customInput">
+            <input style="border-radius: 5px; width: 285px; height: 20px;" type="text" placeholder="확장자 입력" />
+            <input id="btn" type="button" value="+추가"/>
+        </div>
+        <div id="saveExtension">저장된 확장자</div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/basic.js"></script>
+</body>
+</html>

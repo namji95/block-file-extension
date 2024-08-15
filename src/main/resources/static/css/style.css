@@ -1,0 +1,88 @@
+#container {
+    width: 700px;
+    height: 400px;
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-top: 1px solid black;
+
+    padding-left: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#titleName {
+    border-bottom: 3px solid black;
+}
+
+#explanation {
+    font-size: 20px;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#child {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    grid-template-rows: 50px 1fr 200px;
+    grid-template-areas:
+        "fixedExtension checkBox"
+        "customExtension customInput"
+        "customExtension saveExtension";
+}
+
+#fixedExtension {
+    grid-area: fixedExtension;
+
+    display: flex;
+    align-items: center;
+}
+
+#checkBox {
+    display: flex;
+    align-items: center;
+
+    margin-left: 20px;
+}
+
+.check {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+#customExtension {
+    grid-area: customExtension;
+
+    display: flex;
+}
+
+#customInput {
+    grid-area: customInput;
+
+    margin-left: 35px;
+}
+
+#btn {
+    justify-content: center;
+    align-items: center;
+}
+
+#saveExtension {
+    grid-area: saveExtension;
+
+    margin: 15px;
+    margin-left: 35px;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    width: 350px;
+}

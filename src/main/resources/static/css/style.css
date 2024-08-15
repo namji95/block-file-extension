@@ -77,12 +77,43 @@
 
 #saveExtension {
     grid-area: saveExtension;
+    overflow: auto;
 
     margin: 15px;
     margin-left: 35px;
+    padding: 10px;
 
     border: 1px solid black;
     border-radius: 5px;
 
     width: 350px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+#ExtensionList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    height: 10px;
+}
+
+#ExtensionList button {
+    margin-left: 5px;
+    padding: 2px;
+
+    border: none;
+
+    background-color: white;
+
+    cursor: pointer;
 }

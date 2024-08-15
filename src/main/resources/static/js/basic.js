@@ -46,3 +46,24 @@ $(document).ready(function () {
         })
     })
 })
+
+$(document).ready(function () {
+    $.ajax({
+        url: 'api/v1/custom-extension/all',
+        type: 'GET',
+        success: function (data) {
+            data.forEach(function (res) {
+                $('#saveExtension').append(
+                    '<div id="ExtensionList">'
+                    + res.extensionName
+                    + `<button id="reset-button">X</button>` +
+                    '</div>'
+                );
+                // $('#extensionTable tbody').append('<tr><td>' + res.extensionName + '</td></tr>');
+            });
+        },
+        error: function (error) {
+            alert(error.responseText);
+        }
+    });
+});

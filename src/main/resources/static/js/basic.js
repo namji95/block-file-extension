@@ -89,8 +89,8 @@ $(document).ready(function () {
             }),
             success: function (res) {
                 alert(res.extensionName + " 확장자가 삭제되었습니다.");
-                $(this).parent().remove(); // 화면에서 해당 항목 제거
-            }.bind(this), // `this`를 바인딩하여 올바른 요소를 가리키도록 함
+                $(this).parent().remove();
+            }.bind(this),
             error: function (error) {
                 alert(error.responseText);
             }

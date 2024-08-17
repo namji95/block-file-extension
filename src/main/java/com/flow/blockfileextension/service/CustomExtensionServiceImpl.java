@@ -21,6 +21,11 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
   @Override
   public ExtensionResponse createCustomExtension(ExtensionRequest request) {
     commonService.findExtension(request.getExtensionName());
+    List<CustomExtension> customExtensions = customExtensionRepository.findAll();
+
+    if (customExtensions.size() == 200) {
+      throw new IllegalArgumentException("확장자를 더 이상 추가할 수 없습니다.");
+    }
 
     CustomExtension customExtension = new CustomExtension(request.getExtensionName());
 

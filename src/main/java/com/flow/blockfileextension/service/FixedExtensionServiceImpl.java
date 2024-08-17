@@ -4,6 +4,8 @@ import com.flow.blockfileextension.common.CommonService;
 import com.flow.blockfileextension.dto.ExtensionRequest;
 import com.flow.blockfileextension.dto.ExtensionResponse;
 import com.flow.blockfileextension.entity.FixedExtension;
+import com.flow.blockfileextension.exception.CustomException;
+import com.flow.blockfileextension.exception.ErrorCode;
 import com.flow.blockfileextension.repository.FixedExtensionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,7 +40,7 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
     List<FixedExtension> fixedExtension = fixedExtensionRepository.findAll();
 
     if (fixedExtension.isEmpty()) {
-      throw new IllegalArgumentException("존재하는 확장자가 없습니다.");
+      throw new CustomException(ErrorCode.NOT_FOUND_EXTENSION);
     }
 
     for (FixedExtension extension : fixedExtension) {
@@ -54,7 +56,7 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
     FixedExtension deleteExtension = fixedExtensionRepository.findByExtensionName(request.getExtensionName());
 
     if (deleteExtension == null) {
-      throw new IllegalArgumentException("해당 확장자는 존재하지 않습니다.");
+      throw new CustomException(ErrorCode.NOT_FOUND_EXTENSION);
     }
 
     fixedExtensionRepository.delete(deleteExtension);

@@ -104,7 +104,7 @@ $(document).ready(function () {
             }),
             success: function (res) {
                 alert(res.extensionName + " 확장자가 삭제되었습니다.");
-                refreshExtensionList();
+                document.location.reload();
             },
             error: function (error) {
                 alert(error.responseText);

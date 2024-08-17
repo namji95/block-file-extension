@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    // 고정 확장자 체크박스 상태 설정
     $.ajax({
         url: 'api/v1/extension/all',
         type: 'GET',
@@ -12,7 +11,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('.check').change(function (message) {
+    $('.check').change(function () {
         let fixedExtensionValue = $(this).val();
         let isChecked = $(this).is(':checked');
 
@@ -47,12 +46,33 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    function refreshExtensionList() {
+        $.ajax({
+            url: 'api/v1/custom-extension/all',
+            type: 'GET',
+            success: function (data) {
+                let customExtensionCount = data.length;
+
+                $('#customExtensionCount').text(customExtensionCount + "/200");
+                data.forEach(function (res) {
+                    $('#saveExtension').append(
+                        '<div id="extensionItem">' +
+                        res.extensionName +
+                        ' <button id="deleteButton">X</button></div>'
+                    );
+                });
+            }
+        });
+    }
+
+    refreshExtensionList();
+
     $('#btn').click(function () {
         let customExtensionValue = $('input[type="text"]').val();
 
         if (customExtensionValue === "") {
             alert("확장자를 입력해주세요");
-            return
+            return;
         }
 
         $.ajax({
@@ -63,35 +83,17 @@ $(document).ready(function () {
                 extensionName: customExtensionValue
             }),
             success: function (res) {
-                alert(res.extensionName + "확장자가 추가되었습니다.");
+                alert(res.extensionName + " 확장자가 추가되었습니다.");
+                refreshExtensionList();
             },
             error: function (error) {
                 alert(error.responseText);
             }
         });
     });
-});
-
-$(document).ready(function () {
-    $.ajax({
-        url: 'api/v1/custom-extension/all',
-        type: 'GET',
-        success: function (data) {
-            let customExtensionCount = data.length;
-
-            $('#customExtensionCount').text(customExtensionCount+"/200");
-            data.forEach(function (res) {
-                $('#saveExtension').append(
-                    '<div id="extensionItem">' +
-                    res.extensionName +
-                    ' <button id="deleteButton">X</button></div>'
-                );
-            });
-        }
-    });
 
     $('#saveExtension').on('click', '#deleteButton', function () {
-        let extensionName = $(this).parent().text().replace(" X", ""); // 확장자 이름 가져오기
+        let extensionName = $(this).parent().text().replace(" X", "");
 
         $.ajax({
             url: 'api/v1/custom-extension/delete',
@@ -102,8 +104,8 @@ $(document).ready(function () {
             }),
             success: function (res) {
                 alert(res.extensionName + " 확장자가 삭제되었습니다.");
-                $(this).parent().remove();
-            }.bind(this),
+                refreshExtensionList();
+            },
             error: function (error) {
                 alert(error.responseText);
             }

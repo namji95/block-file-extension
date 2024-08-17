@@ -51,16 +51,17 @@ $(document).ready(function () {
         type: 'GET',
         success: function (data) {
             let customExtensionCount = data.data.length;
-            console.log(customExtensionCount);
 
-            $('#customExtensionCount').text(customExtensionCount + "/200");
-            data.data.forEach(function (res) {
-                $('#saveExtension').append(
-                    '<div id="extensionItem">' +
-                    res.extensionName +
-                    ' <button id="deleteButton">X</button></div>'
-                );
-            });
+            if (customExtensionCount >= 1) {
+                $('#customExtensionCount').text(customExtensionCount + "/200");
+                data.data.forEach(function (res) {
+                    $('#saveExtension').append(
+                        '<div id="extensionItem">' +
+                        res.extensionName +
+                        ' <button id="deleteButton">X</button></div>'
+                    );
+                });
+            }
         }
     });
 

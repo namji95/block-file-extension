@@ -4,7 +4,6 @@ import com.flow.blockfileextension.common.CommonService;
 import com.flow.blockfileextension.dto.ExtensionRequest;
 import com.flow.blockfileextension.dto.ExtensionResponse;
 import com.flow.blockfileextension.entity.FixedExtension;
-import com.flow.blockfileextension.repository.CustomExtensionRepository;
 import com.flow.blockfileextension.repository.FixedExtensionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
   public ExtensionResponse createFixedExtension(ExtensionRequest request) {
     commonService.findExtension(request.getExtensionName());
 
-    FixedExtension fixedExtension = new FixedExtension(request.getExtensionName(), true);
+    FixedExtension fixedExtension = new FixedExtension(request.getExtensionName());
 
     FixedExtension saveFixedExtension = fixedExtensionRepository.save(fixedExtension);
 
@@ -43,11 +42,23 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
     }
 
     for (FixedExtension extension : fixedExtension) {
-      if (extension.isBool()) {
-        responses.add(new ExtensionResponse(extension.getExtensionName()));
-      }
+      responses.add(new ExtensionResponse(extension.getExtensionName()));
     }
 
     return responses;
+  }
+
+  @Transactional
+  @Override
+  public ExtensionResponse deleteFixedExtension(ExtensionRequest request) {
+    FixedExtension deleteExtension = fixedExtensionRepository.findByExtensionName(request.getExtensionName());
+
+    if (deleteExtension == null) {
+      throw new IllegalArgumentException("해당 확장자는 존재하지 않습니다.");
+    }
+
+    fixedExtensionRepository.delete(deleteExtension);
+
+    return new ExtensionResponse(deleteExtension.getExtensionName());
   }
 }

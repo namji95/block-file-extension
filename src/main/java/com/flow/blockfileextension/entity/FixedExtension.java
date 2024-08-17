@@ -19,11 +19,7 @@ public class FixedExtension {
   @Column(name = "extension_name")
   private String extensionName;
 
-  @Column(name = "bool")
-  private boolean bool;
-
-  public FixedExtension(String name, Boolean bool) {
-    this.extensionName = name;
-    this.bool = bool;
+  public FixedExtension(String extensionName) {
+    this.extensionName = extensionName;
   }
 }

@@ -44,4 +44,18 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
 
     return responses;
   }
+
+  @Override
+  public ExtensionResponse deleteCustomExtension(ExtensionRequest request) {
+    CustomExtension deleteCustomExtension =
+        customExtensionRepository.findByCustomExtensionName(request.getExtensionName());
+
+    if (deleteCustomExtension == null) {
+      throw new IllegalArgumentException("해당 확장자는 존재하지 않습니다.");
+    }
+
+    customExtensionRepository.delete(deleteCustomExtension);
+
+    return new ExtensionResponse(deleteCustomExtension.getCustomExtensionName());
+  }
 }

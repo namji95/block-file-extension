@@ -13,6 +13,5 @@ public class ExtensionRequest {
   @Size(min = 1, max = 20, message = "글자수는 1자 ~ 20자내로 작성해주시기 바랍니다.")
   private String extensionName;
 
-  private boolean bool;
-
+  private Boolean bool;
 }

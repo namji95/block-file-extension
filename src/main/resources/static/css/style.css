@@ -90,24 +90,20 @@
 
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 10px;
 }
 
-#ExtensionList {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.extensionItem {
+    border: 1px solid black;
+    border-radius: 3px;
 
-    padding: 5px;
-    border: 1px solid;
-    border-radius: 5px;
+    height: 25px;
 
-    font-size: 10px;
-
-    height: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-#ExtensionList button {
+.extensionItem button {
     margin-left: 5px;
     padding: 2px;
 

@@ -21,7 +21,7 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
   private final CommonService commonService;
 
   @Override
-  public ExtensionResponse createCustomExtension(ExtensionRequest request) {
+  public void createCustomExtension(ExtensionRequest request) {
     commonService.findExtension(request.getExtensionName());
     List<CustomExtension> customExtensions = customExtensionRepository.findAll();
 
@@ -31,9 +31,7 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
 
     CustomExtension customExtension = new CustomExtension(request.getExtensionName());
 
-    CustomExtension saveCustomExtension = customExtensionRepository.save(customExtension);
-
-    return new ExtensionResponse(saveCustomExtension.getCustomExtensionName());
+    customExtensionRepository.save(customExtension);
   }
 
   @Override
@@ -53,7 +51,7 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
   }
 
   @Override
-  public ExtensionResponse deleteCustomExtension(ExtensionRequest request) {
+  public void deleteCustomExtension(ExtensionRequest request) {
     CustomExtension deleteCustomExtension =
         customExtensionRepository.findByCustomExtensionName(request.getExtensionName());
 
@@ -62,7 +60,5 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
     }
 
     customExtensionRepository.delete(deleteCustomExtension);
-
-    return new ExtensionResponse(deleteCustomExtension.getCustomExtensionName());
   }
 }

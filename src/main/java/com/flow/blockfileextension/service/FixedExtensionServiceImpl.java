@@ -23,14 +23,12 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
 
   @Transactional
   @Override
-  public ExtensionResponse createFixedExtension(ExtensionRequest request) {
+  public void createFixedExtension(ExtensionRequest request) {
     commonService.findExtension(request.getExtensionName());
 
     FixedExtension fixedExtension = new FixedExtension(request.getExtensionName());
 
-    FixedExtension saveFixedExtension = fixedExtensionRepository.save(fixedExtension);
-
-    return new ExtensionResponse(saveFixedExtension.getExtensionName());
+    fixedExtensionRepository.save(fixedExtension);
   }
 
   @Transactional(readOnly = true)
@@ -52,7 +50,7 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
 
   @Transactional
   @Override
-  public ExtensionResponse deleteFixedExtension(ExtensionRequest request) {
+  public void deleteFixedExtension(ExtensionRequest request) {
     FixedExtension deleteExtension = fixedExtensionRepository.findByExtensionName(request.getExtensionName());
 
     if (deleteExtension == null) {
@@ -60,7 +58,5 @@ public class FixedExtensionServiceImpl implements FixedExtensionService {
     }
 
     fixedExtensionRepository.delete(deleteExtension);
-
-    return new ExtensionResponse(deleteExtension.getExtensionName());
   }
 }

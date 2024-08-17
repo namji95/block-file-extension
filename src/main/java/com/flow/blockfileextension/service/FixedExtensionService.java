@@ -12,7 +12,7 @@ public interface FixedExtensionService {
    * @param request 선택한 확장자 이름
    * @return 저장된 확장자
    */
-  ExtensionResponse createFixedExtension(ExtensionRequest request);
+  void createFixedExtension(ExtensionRequest request);
 
   /**
    * 저장한 고정 확장자 전체 조회
@@ -26,5 +26,5 @@ public interface FixedExtensionService {
    * @param request 선택한 확장자 이름
    * @return 삭제된 고정 확장자
    */
-  ExtensionResponse deleteFixedExtension(ExtensionRequest request);
+  void deleteFixedExtension(ExtensionRequest request);
 }

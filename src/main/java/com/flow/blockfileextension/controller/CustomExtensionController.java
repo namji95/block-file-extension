@@ -30,9 +30,4 @@ public class CustomExtensionController {
   public ExtensionResponse deleteCustomExtension(@RequestBody @Valid ExtensionRequest request) {
     return customExtensionService.deleteCustomExtension(request);
   }
-
-  /*
-  * todo: 삭제 기능 구현
-  *  view X 클릭 식 DB 삭제
-  * */
 }

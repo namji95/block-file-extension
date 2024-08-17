@@ -26,5 +26,5 @@ public interface CustomExtensionService {
    * @return 삭제된 커스텀 확장자 이름
    */
   ExtensionResponse deleteCustomExtension(ExtensionRequest request);
-  
+
 }

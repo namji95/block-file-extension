@@ -42,6 +42,6 @@ public class FixedExtensionController {
 
   /*
    * todo: 고정 확장자 추가 기능 구현 -- 시간 될 시
-   *  기능 구현 시 최대 10개로 제한 grid 이용
+   *  기능 구현 시 최대 10개로 제한
    * */
 }

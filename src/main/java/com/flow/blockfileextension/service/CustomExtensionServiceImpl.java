@@ -25,7 +25,7 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
     commonService.findExtension(request.getExtensionName());
     List<CustomExtension> customExtensions = customExtensionRepository.findAll();
 
-    if (customExtensions.size() == 200) {
+    if (customExtensions.size() < 201) {
       throw new CustomException(ErrorCode.RANGE_LIMIT);
     }
 

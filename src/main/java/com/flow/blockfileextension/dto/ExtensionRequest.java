@@ -12,6 +12,4 @@ public class ExtensionRequest {
   @Pattern(regexp = "^[a-zA-Z]*$", message = "영어만 작성할 수 있습니다.")
   @Size(min = 1, max = 20, message = "1자 ~ 20자내로 작성해주시기 바랍니다.")
   private String extensionName;
-
-  private Boolean bool;
 }

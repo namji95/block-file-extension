@@ -2,6 +2,8 @@ package com.flow.blockfileextension.common;
 
 import com.flow.blockfileextension.entity.CustomExtension;
 import com.flow.blockfileextension.entity.FixedExtension;
+import com.flow.blockfileextension.exception.CustomException;
+import com.flow.blockfileextension.exception.ErrorCode;
 import com.flow.blockfileextension.repository.CustomExtensionRepository;
 import com.flow.blockfileextension.repository.FixedExtensionRepository;
 import com.sun.jdi.request.DuplicateRequestException;
@@ -20,7 +22,7 @@ public class CommonService {
     CustomExtension findCustomExtension = customExtensionRepository.findByCustomExtensionName(name);
 
     if ((findFixedExtension != null || findCustomExtension != null)) {
-      throw new DuplicateRequestException("해당 확장자는 이미 존재하는 확장자입니다.");
+      throw new CustomException(ErrorCode.DUPLICATE_EXTENSION);
     }
   }
 }

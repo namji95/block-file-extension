@@ -21,7 +21,7 @@ $(document).ready(function () {
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({extensionName: fixedExtensionValue}),
-                success: function (res) {
+                success: function () {
                     alert("확장자가 추가되었습니다.");
                 },
                 error: function (error) {
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 type: 'DELETE',
                 contentType: 'application/json',
                 data: JSON.stringify({extensionName: fixedExtensionValue}),
-                success: function (res) {
+                success: function () {
                     alert("확장자가 삭제되었습니다.");
                 },
                 error: function (error) {
@@ -80,7 +80,7 @@ $(document).ready(function () {
             data: JSON.stringify({
                 extensionName: customExtensionValue
             }),
-            success: function (res) {
+            success: function () {
                 alert("확장자가 추가되었습니다.");
                 document.location.reload();
             },
@@ -100,9 +100,29 @@ $(document).ready(function () {
             data: JSON.stringify({
                 extensionName: extensionName
             }),
-            success: function (res) {
+            success: function () {
                 alert("확장자가 삭제되었습니다.");
                 document.location.reload();
+            },
+            error: function (error) {
+                alert(error.responseText);
+            }
+        });
+    });
+});
+
+$(document).ready(function () {
+    $('#uploadBtn').click(function () {
+        $.ajax({
+            url: "api/v1/file",
+            type: "POST",
+            data: new FormData($('#uploadForm')[0]),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function () {
+                alert("파일이 저장되었습니다.");
             },
             error: function (error) {
                 alert(error.responseText);

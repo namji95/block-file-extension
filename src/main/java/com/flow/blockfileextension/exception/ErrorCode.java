@@ -16,7 +16,8 @@ public enum ErrorCode {
   EXTENSION_NOT_EXIST(HttpStatus.BAD_REQUEST, "확장자가 존재하지 않는 파일입니다."),
   BLOCKED_EXTENSION(HttpStatus.BAD_REQUEST, "차단된 확장자 입니다. 다른 파일을 업로드 해주세요."),
   FILE_NOT_EXIST(HttpStatus.BAD_REQUEST, "파일을 올리지 않고 요청하셨습니다. 파일을 업로드 해주세요."),
-  EXTENSION_NAME_FORM(HttpStatus.BAD_REQUEST, "영문 확장자가 아닌 확장자는 접근할 수 없습니다. (ex. 공백, 숫자, 한글)");
+  EXTENSION_NAME_FORM(HttpStatus.BAD_REQUEST, "영문 확장자가 아닌 확장자는 접근할 수 없습니다. (ex. 공백, 숫자, 한글)"),
+  DUPLICATE_FILE(HttpStatus.BAD_REQUEST, "동일한 파일이 존재합니다.");
 
   private final HttpStatus httpStatus;
   private final String message;

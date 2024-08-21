@@ -32,6 +32,7 @@ public class FileServiceImpl implements FileService {
 
     // 파일 확장자 검증
     extensionExtraction(file);
+    duplicateFile(file);
 
     File folder = new File(
         file.getOriginalFilename(),
@@ -72,6 +73,15 @@ public class FileServiceImpl implements FileService {
 
     if (customExtension != null || fixedExtension != null) {
       throw new CustomException(ErrorCode.BLOCKED_EXTENSION);
+    }
+  }
+
+  // 중복 여부
+  private void duplicateFile(MultipartFile file) {
+    File originalFile = fileRepository.findByOriginalFilename(file.getOriginalFilename());
+
+    if (originalFile != null) {
+      throw new CustomException(ErrorCode.DUPLICATE_FILE);
     }
   }
 }

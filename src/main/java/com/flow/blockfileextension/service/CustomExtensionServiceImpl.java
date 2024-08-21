@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CustomExtensionServiceImpl implements CustomExtensionService{
+public class CustomExtensionServiceImpl implements CustomExtensionService {
 
   private final CustomExtensionRepository customExtensionRepository;
   private final CommonService commonService;
@@ -25,7 +25,7 @@ public class CustomExtensionServiceImpl implements CustomExtensionService{
     commonService.findExtension(request.getExtensionName());
     List<CustomExtension> customExtensions = customExtensionRepository.findAll();
 
-    if (customExtensions.size() < 201) {
+    if (customExtensions.size() > 200) {
       throw new CustomException(ErrorCode.RANGE_LIMIT);
     }
 

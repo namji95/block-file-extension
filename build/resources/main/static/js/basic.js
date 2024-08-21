@@ -20,7 +20,7 @@ $(document).ready(function () {
                 url: '/api/v1/extension',
                 type: 'POST',
                 contentType: 'application/json',
-                data: JSON.stringify({extensionName : fixedExtensionValue}),
+                data: JSON.stringify({extensionName: fixedExtensionValue}),
                 success: function (res) {
                     alert("확장자가 추가되었습니다.");
                 },
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 url: 'api/v1/extension/delete',
                 type: 'DELETE',
                 contentType: 'application/json',
-                data: JSON.stringify({extensionName : fixedExtensionValue}),
+                data: JSON.stringify({extensionName: fixedExtensionValue}),
                 success: function (res) {
                     alert("확장자가 삭제되었습니다.");
                 },

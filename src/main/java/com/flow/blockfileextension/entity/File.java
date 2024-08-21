@@ -4,22 +4,25 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Table
+@Table(name = "files")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomExtension {
+public class File {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String customExtensionName;
+  private String originalFilename;
+  private String name;
+  private String type;
 
-  public CustomExtension(String extensionName) {
-    this.customExtensionName = extensionName;
+  public File(String originalFilename, String name, String type) {
+    this.originalFilename = originalFilename;
+    this.name = name;
+    this.type = type;
   }
 }

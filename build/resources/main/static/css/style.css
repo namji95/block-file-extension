@@ -3,7 +3,7 @@
     height: 400px;
 
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -56,6 +56,8 @@
 .check {
     margin-left: 20px;
     margin-right: 5px;
+
+    cursor: pointer;
 }
 
 #customExtension {
@@ -73,6 +75,7 @@
 #btn {
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #saveExtension {
@@ -115,6 +118,44 @@
     border: none;
 
     background-color: white;
+
+    cursor: pointer;
+}
+
+#subContainer {
+    width: 700px;
+    height: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid black;
+}
+
+#subTitle {
+    border-bottom: 3px solid black;
+}
+
+#subChild {
+    width: 95%;
+    height: 150px;
+
+    margin: auto;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#upload {
+    font-size: 50px;
+    font-weight: bold;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 30px;
 
     cursor: pointer;
 }

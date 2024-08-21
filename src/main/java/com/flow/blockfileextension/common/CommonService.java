@@ -6,7 +6,6 @@ import com.flow.blockfileextension.exception.CustomException;
 import com.flow.blockfileextension.exception.ErrorCode;
 import com.flow.blockfileextension.repository.CustomExtensionRepository;
 import com.flow.blockfileextension.repository.FixedExtensionRepository;
-import com.sun.jdi.request.DuplicateRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

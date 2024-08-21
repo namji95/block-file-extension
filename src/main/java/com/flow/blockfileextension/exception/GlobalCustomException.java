@@ -7,6 +7,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 @ControllerAdvice
 public class GlobalCustomException {
@@ -33,5 +34,12 @@ public class GlobalCustomException {
     }
 
     return new ResponseEntity<>(builder.toString(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(MaxUploadSizeExceededException.class)
+  public ResponseEntity<String> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException e) {
+    return ResponseEntity
+        .status(HttpStatus.BAD_REQUEST)
+        .body("파일 크기가 너무 큽니다. 파일 크기는 최대 10MB까지 허용됩니다.");
   }
 }

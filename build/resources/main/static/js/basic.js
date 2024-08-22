@@ -14,6 +14,7 @@ $(document).ready(function () {
     $('.check').change(function () {
         let fixedExtensionValue = $(this).val();
         let isChecked = $(this).is(':checked');
+        let $this = $(this);
 
         if (isChecked) {
             $.ajax({
@@ -21,11 +22,13 @@ $(document).ready(function () {
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({extensionName: fixedExtensionValue}),
-                success: function () {
-                    alert("확장자가 추가되었습니다.");
+                success: function (data) {
+                    alert(fixedExtensionValue + " 확장자가 추가되었습니다.");
                 },
                 error: function (error) {
-                    alert(error.responseText);
+                    let errorMessage = JSON.parse(error.responseText);
+                    alert(errorMessage.message);
+                    $this.prop('checked', false);
                 }
             });
         } else {
@@ -35,10 +38,11 @@ $(document).ready(function () {
                 contentType: 'application/json',
                 data: JSON.stringify({extensionName: fixedExtensionValue}),
                 success: function () {
-                    alert("확장자가 삭제되었습니다.");
+                    alert(fixedExtensionValue + " 확장자가 삭제되었습니다.");
                 },
                 error: function (error) {
-                    alert(error.responseText);
+                    let errorMessage = JSON.parse(error.responseText);
+                    alert(errorMessage.message);
                 }
             });
         }
@@ -81,7 +85,7 @@ $(document).ready(function () {
                 extensionName: customExtensionValue
             }),
             success: function () {
-                alert("확장자가 추가되었습니다.");
+                alert(customExtensionValue + " 확장자가 추가되었습니다.");
                 document.location.reload();
             },
             error: function (error) {
@@ -101,11 +105,12 @@ $(document).ready(function () {
                 extensionName: extensionName
             }),
             success: function () {
-                alert("확장자가 삭제되었습니다.");
+                alert(extensionName + "확장자가 삭제되었습니다.");
                 document.location.reload();
             },
             error: function (error) {
-                alert(error.responseText);
+                let errorMessage = JSON.parse(error.responseText);
+                alert(errorMessage.message);
             }
         });
     });
@@ -113,6 +118,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#uploadBtn').click(function () {
+
         $.ajax({
             url: "api/v1/file",
             type: "POST",

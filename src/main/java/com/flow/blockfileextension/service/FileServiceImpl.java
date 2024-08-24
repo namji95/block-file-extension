@@ -26,6 +26,11 @@ public class FileServiceImpl implements FileService {
 
   @Override
   public String saveFile(MultipartFile file) throws IOException {
+    float megabytes = (float) file.getSize() / 1024 / 1024;
+    if (megabytes > 10) {
+      throw new CustomException(ErrorCode.FILE_SIZE_LIMIT);
+    }
+
     if (file.isEmpty()) {
       throw new CustomException(ErrorCode.FILE_NOT_EXIST);
     }

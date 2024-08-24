@@ -129,9 +129,11 @@ $(document).ready(function () {
             cache: false,
             success: function () {
                 alert("파일이 저장되었습니다.");
+                document.location.reload();
             },
             error: function (error) {
-                alert(error.responseText);
+                let errorMessage = JSON.parse(error.responseText);
+                alert(errorMessage.message);
             }
         });
     });
